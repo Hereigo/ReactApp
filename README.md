@@ -2,6 +2,8 @@
 
 React 16 learning project.
 
+### Commands notes:
+
 ```ps1
 
 npm install create-react-app
