@@ -32,6 +32,12 @@
         }
         console.log(myFilter(1, 2, 3, 4)); // => [2]
 
+        // Deconstructing:
+
+        const numArray = [1, 2, 3, 4];
+        [a, , c] = numArray; // imagining b and d - ignored
+        console.log(a, c); // 1  3
+
     </script>
 </body>
 
