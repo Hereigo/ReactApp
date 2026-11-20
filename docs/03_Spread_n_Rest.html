@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        // Spread operator:
+
+        const numbers = [1, 2, 3];
+        const numbers2 = [...numbers, 4];
+        console.log(numbers2); // => [1, 2, 3, 4]
+
+        const person = {
+            name: 'Max'
+        };
+        const newPerson = {
+            ...person,
+            age: 28
+        };
+        console.log(newPerson); // => [object Object] { age:28, name: "Max" }
+
+        // Rest operator:
+
+        const myFilter = (...args) => {
+            return args.filter(el => el === 2);
+        }
+        console.log(myFilter(1, 2, 3, 4)); // => [2]
+
+    </script>
+</body>
+
+</html>
