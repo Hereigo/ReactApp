@@ -5,17 +5,18 @@
 // will only see deployed updates on the "N+1" visit to a page, since previously
 // cached resources are updated in the background.
 
-// To learn more about the benefits of this model, read https://goo.gl/KwvDNy.
+// To learn more about the benefits of this model, visit and read -
+// https://github.com/react/create-react-app/blob/main/packages/cra-template/template/README.md
 // This link also includes instructions on opting out of this behavior.
 
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
-    // [::1] is the IPv6 localhost address.
-    window.location.hostname === '[::1]' ||
-    // 127.0.0.1/8 is considered localhost for IPv4.
-    window.location.hostname.match(
-      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
-    )
+  // [::1] is the IPv6 localhost address.
+  window.location.hostname === '[::1]' ||
+  // 127.0.0.1/8 is considered localhost for IPv4.
+  window.location.hostname.match(
+    /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
+  )
 );
 
 export default function register() {
@@ -40,8 +41,9 @@ export default function register() {
         // service worker/PWA documentation.
         navigator.serviceWorker.ready.then(() => {
           console.log(
-            'This web app is being served cache-first by a service ' +
-              'worker. To learn more, visit https://goo.gl/SC7cgQ'
+            'This web app is being served cache-first by a service worker. ' +
+            'To learn more, visit ' +
+            'https://github.com/react/create-react-app/blob/main/packages/cra-template/template/README.md'
           );
         });
       } else {
