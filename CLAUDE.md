@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 A React 16 learning project with two parts:
 
 - The repo root is a create-react-app project (`react-scripts` 1.1.5, React 16.14). Its source is in `src/`, and `public/index.html` is the page template.
-- `docs/` holds standalone lesson pages that run in the browser with no build step.
+- `my-notes/` holds standalone lesson notes: HTML pages that run in the browser with no build step, plus Markdown notes.
 
 ## Commands
 
@@ -26,10 +26,10 @@ Run these from the repo root:
 - Tests sit next to the code as `*.test.js` (`src/App.test.js`).
 - Keep the React 16 API (`ReactDOM.render`, not `createRoot`) unless asked to upgrade.
 
-## Lessons (`docs/`)
+## Notes (`my-notes/`)
 
-- Lessons are numbered in course order with a two-digit prefix (`01_Example.html`, `02_Classes.jpg`, `03_Spread_n_Rest.html`), so the next lesson is `04_...`. To run one, open the `.html` file directly in a browser.
-- A lesson can be an `.html` page or an image. Image lessons (such as `02_Classes.jpg`) are course slides kept as reference material, not app code.
-- Not every lesson uses React. `03_Spread_n_Rest.html` covers plain ES6 syntax in a `<script type="text/javascript">` tag and logs results to the console.
-- React lessons load React and ReactDOM 16 as UMD builds from unpkg (`https://unpkg.com/react@16/...`). They transpile JSX in the browser: each page loads Babel standalone (`https://unpkg.com/@babel/standalone@7.24.0/babel.min.js`) after React and ReactDOM, and puts its JSX in a `<script type="text/babel">` tag. A plain `<script>` containing JSX throws a syntax error, so a new React lesson needs both of these.
-- Lessons don't share code with `src/`. Each page is self-contained.
+- Files are named by topic with a prefix for the subject, not numbered: `JS_*.html` for plain JavaScript, `React_*.html` for React (`JS_Classes.html`, `JS_Spread_n_Rest.html`, `React_Example.html`). To run a page, open the `.html` file directly in a browser.
+- `JS_*` pages cover plain ES6 syntax in a `<script type="text/javascript">` tag and log results to the console, with the expected output in `// =>` comments.
+- `React_*` pages load React and ReactDOM 16 as UMD builds from unpkg (`https://unpkg.com/react@16/...`). They transpile JSX in the browser: each page loads Babel standalone (`https://unpkg.com/@babel/standalone@7.24.0/babel.min.js`) after React and ReactDOM, and puts its JSX in a `<script type="text/babel">` tag. A plain `<script>` containing JSX throws a syntax error, so a new React page needs both of these.
+- `Useful_Commands.md` collects shell commands, such as the create-react-app setup. Add new command notes there rather than to `README.md`.
+- Notes don't share code with `src/`. Each page is self-contained.

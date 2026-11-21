@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        class Human {
+            constructor() {
+                this.gender = 'male';
+            }
+
+            printGender() {
+                console.log(this.gender);
+            }
+        }
+
+        class Person extends Human {
+            constructor() {
+                super(); // call ctor of base class (add gender prop)
+                this.name = 'Alex';
+                this.gender = 'female'; // (override gender prop)
+            }
+
+            printName() {
+                console.log(this.name);
+            }
+        }
+
+        const person = new Person();
+        person.printName();     // => "Alex"
+        person.printGender();   // => "female"
+
+    </script>
+</body>
+
+</html>
