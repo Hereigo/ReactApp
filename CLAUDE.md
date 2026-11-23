@@ -22,14 +22,17 @@ Run these from the repo root:
 ## The app (`src/`)
 
 - `src/index.js` mounts `App` with the React 16 API `ReactDOM.render(<App />, document.getElementById('root'))` and calls `registerServiceWorker()`.
-- `src/App.js` is still the create-react-app template: a class component (`extends Component`).
-- Tests sit next to the code as `*.test.js` (`src/App.test.js`).
+- `src/App.js` is the lesson sandbox and changes from lesson to lesson. It is a class component (`extends Component`) that holds a `persons` list in `this.state` and renders one `MyPerson` per entry, passing `name`, `children`, and a click handler (`myClickProp`) as props.
+- Each component gets its own folder named after it: `src/MyPerson/MyPerson.js` is a function component that reads `props`.
+- Tests sit next to the code as `*.test.js` (`src/App.test.js`, a smoke test that renders `App`).
+- React 16.14 supports hooks. Hooks such as `useState` work only in function components; class components use `this.state` and `this.setState`.
 - Keep the React 16 API (`ReactDOM.render`, not `createRoot`) unless asked to upgrade.
 
 ## Notes (`my-notes/`)
 
 - Files are named by topic with a prefix for the subject, not numbered: `JS_*.html` for plain JavaScript, `React_*.html` for React (`JS_Classes.html`, `JS_Spread_n_Rest.html`, `React_Example.html`). To run a page, open the `.html` file directly in a browser.
-- `JS_*` pages cover plain ES6 syntax in a `<script type="text/javascript">` tag and log results to the console, with the expected output in `// =>` comments.
+- `JS_*` pages cover plain ES6 syntax in a `<script type="text/javascript">` tag and log results to the console, with the expected output in `// =>` comments. Some pages are reference text instead of runnable code: `JS_Events_Types.html` lists the event names and properties React supports.
+- Images such as `React_useState_.jpg` are screenshots kept as notes, named with the same prefixes.
 - `React_*` pages load React and ReactDOM 16 as UMD builds from unpkg (`https://unpkg.com/react@16/...`). They transpile JSX in the browser: each page loads Babel standalone (`https://unpkg.com/@babel/standalone@7.24.0/babel.min.js`) after React and ReactDOM, and puts its JSX in a `<script type="text/babel">` tag. A plain `<script>` containing JSX throws a syntax error, so a new React page needs both of these.
 - `Useful_Commands.md` collects shell commands, such as the create-react-app setup. Add new command notes there rather than to `README.md`.
 - Notes don't share code with `src/`. Each page is self-contained.
