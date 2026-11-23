@@ -10,9 +10,7 @@ class App extends Component {
       { name: "Alex" },
       { name: "Max" },
       { name: "Felix" }
-    ],
-    personsAdditionalStartField: "Additional Start Field",
-    otherTestState: 'AAA AAA !!!'
+    ]
   };
 
   // Handler (arrow function, so "this" always points to the component):
@@ -30,6 +28,17 @@ class App extends Component {
   // only "persons" is replaced, "personsAdditionalStartField" and
   // "otherTestState" remain as is !!!
   // (A "useState" setter in a function component REPLACES the whole object instead.)
+
+
+  nameChangedHandler = (event) => {
+    this.setState({
+      persons: [
+        { name: "Alex" },
+        { name: event.target.value },
+        { name: "Felix" }
+      ]
+    });
+  };
 
   render() {
     console.log(this.state);
@@ -53,7 +62,8 @@ class App extends Component {
 
           <MyPersonVar
             myClickProp={this.switchNameHandler.bind(this, 'Last-LINE-Click')}
-            name={this.state.persons[2].name}>
+            name={this.state.persons[2].name}
+            propChanged={this.nameChangedHandler}>
             (Can be clicked also.)
           </MyPersonVar>
 
