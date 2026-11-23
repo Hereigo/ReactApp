@@ -15,18 +15,19 @@ const app = props => {
     personsAdditionalStartField: "Additional Start Field"
   });
 
-  const switchNameHandler = () => {
+  // Handler:
+  const switchNameHandler = (newName) => {
     setPersonsState({  // update\mutate "state"
       persons: [
-        { name: 'HIDDEN' },
-        { name: 'HIDDEN' },
-        { name: 'HIDDEN' }
+        { name: newName },
+        { name: newName },
+        { name: newName }
       ]
       // personsAdditionalStartField: not exists in this state
     });
   };
 
-  // "setPersonsState" - updates only "persons []"
+  // "setPersonsState" - updates only "personsState: persons[], personsAddField"
   // and not "otherTestState" - it will remains as is !!!
   const [otherTestState, setOtherTestState] = useState('AAA AAA !!!');
 
@@ -41,9 +42,12 @@ const app = props => {
       </header>
       <div className="App-intro">
 
-        <button onClick={switchNameHandler}>Switch Name</button>
+        <button onClick={switchNameHandler.bind(this, 'BTN-Click')}>Switch Name</button>
 
-        <MyPersonVar name={personsState.persons[0].name} />
+        {/*                 You can transfer METHOD as a PROPERTY into Component! */}
+        <MyPersonVar
+          name={personsState.persons[0].name}
+          myClickProp={switchNameHandler.bind(this, '1st-LINE-Click')} />
         <MyPersonVar name={personsState.persons[1].name} />
         <MyPersonVar name={personsState.persons[2].name} > Yahoo! </MyPersonVar>
 
