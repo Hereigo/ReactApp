@@ -11,7 +11,8 @@ const app = props => {
       { name: "Alex" },
       { name: "Max" },
       { name: "Felix" }
-    ]
+    ],
+    personsAdditionalStartField: "Additional Start Field"
   });
 
   const switchNameHandler = () => {
@@ -21,8 +22,15 @@ const app = props => {
         { name: 'HIDDEN' },
         { name: 'HIDDEN' }
       ]
+      // personsAdditionalStartField: not exists in this state
     });
   };
+
+  // "setPersonsState" - updates only "persons []"
+  // and not "otherTestState" - it will remains as is !!!
+  const [otherTestState, setOtherTestState] = useState('AAA AAA !!!');
+
+  console.log(personsState, otherTestState);
 
   return (
     <div className="App">
@@ -31,7 +39,7 @@ const app = props => {
         <img src={logo} className="App-logo" alt="logo" />
         <h1 className="App-title">Welcome to React</h1>
       </header>
-      <p className="App-intro">
+      <div className="App-intro">
 
         <button onClick={switchNameHandler}>Switch Name</button>
 
@@ -39,7 +47,7 @@ const app = props => {
         <MyPersonVar name={personsState.persons[1].name} />
         <MyPersonVar name={personsState.persons[2].name} > Yahoo! </MyPersonVar>
 
-      </p>
+      </div>
     </div>
   );
 }
