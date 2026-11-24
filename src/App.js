@@ -41,7 +41,14 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state);
+
+    const myStyle = {
+      color: 'blue',
+      bnorderColor: 'blue',
+      backgroundColor: 'Azure',
+      padding: '8px',
+      fontSize: 'medium'
+    };
 
     return (
       <div className="App">
@@ -52,7 +59,9 @@ class App extends Component {
         </header>
         <div className="App-intro">
 
-          <button onClick={() => this.switchNameHandler('BTN-Click')}>Switch Name</button>
+          <button
+            style={myStyle}
+            onClick={() => this.switchNameHandler('BTN-Click')}>Switch Name</button>
 
           <MyPersonVar name={this.state.persons[0].name} />
 
