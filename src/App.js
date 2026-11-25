@@ -61,16 +61,22 @@ class App extends Component {
       persons = (
         // Means: React.createElement() (under hood)
         <div>
-          <MyPersonVar name={this.state.persons[0].name} />
-          <MyPersonVar name={this.state.persons[1].name} />
 
-          {/* You can pass a METHOD as a PROPERTY into Component. */}
+          {this.state.persons.map(person => {
+            return <MyPersonVar name={person.name} />
+          })}
+
+
+          {/* <MyPersonVar name={this.state.persons[0].name} />
+          <MyPersonVar name={this.state.persons[1].name} />        
           <MyPersonVar
             myClickProp={this.switchNameHandler.bind(this, 'Last-LINE-Click')}
             name={this.state.persons[2].name}
             propChanged={this.nameChangedHandler}>
             (Can be clicked also.)
-          </MyPersonVar>
+          </MyPersonVar> 
+          */}
+
         </div>
       );
     }
