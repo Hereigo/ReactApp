@@ -41,6 +41,12 @@ class App extends Component {
     });
   };
 
+  deletePersonHandler = (personIndex) => {
+    const persons = this.state.persons;
+    persons.splice(personIndex, 1);
+    this.setState({ persons: persons });
+  }
+
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
     this.setState({ showPersons: !doesShow });
@@ -61,11 +67,14 @@ class App extends Component {
       persons = (
         // Means: React.createElement() (under hood)
         <div>
-
-          {this.state.persons.map(person => {
-            return <MyPersonVar name={person.name} />
-          })}
-
+          {
+            this.state.persons.map((person, index) => {
+              return <MyPersonVar
+                deletePersonAct={() => this.deletePersonHandler(index)}
+                name={person.name}
+              />
+            })
+          }
 
           {/* <MyPersonVar name={this.state.persons[0].name} />
           <MyPersonVar name={this.state.persons[1].name} />        

@@ -10,9 +10,10 @@ const myPerson = (props) => {
                 I'm a Person Component! <br />
                 My name is {props.name}. <br />
                 I am {Math.floor(Math.random() * 100)} years old. <br />
-                {/* Included element:  */} <b> {props.children} </b> <br />
 
-                <input type='text' onChange={props.propChanged} />
+                {/* Included element, if exists! */} <b> {props.children} </b> <br />
+
+                <input type='button' onClick={props.deletePersonAct} value='Delete' />
 
                 {/* <input type='text' onChange={props.propChanged} value={props.name}/> ?????? */}
 
