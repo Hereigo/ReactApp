@@ -7,9 +7,9 @@ class App extends Component {
 
   state = {
     persons: [
-      { name: "Alex" },
-      { name: "Max" },
-      { name: "Felix" }
+      { id: 'guid111', name: "Alex" },
+      { id: 'guid222', name: "Max" },
+      { id: 'guid333', name: "Felix" }
     ],
     showPersons: true
   };
@@ -30,19 +30,19 @@ class App extends Component {
   // "otherTestState" remain as is !!!
   // (A "useState" setter in a function component REPLACES the whole object instead.)
 
-
-  nameChangedHandler = (event) => {
-    this.setState({
-      persons: [
-        { name: "Alex" },
-        { name: event.target.value },
-        { name: "Felix" }
-      ]
-    });
-  };
+  // nameChangedHandler = (event) => {
+  //   this.setState({
+  //     persons: [
+  //       { name: "Alex" },
+  //       { name: event.target.value },
+  //       { name: "Felix" }
+  //     ]
+  //   });
+  // };
 
   deletePersonHandler = (personIndex) => {
-    const persons = this.state.persons;
+    // const persons = this.state.persons;
+    const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState({ persons: persons });
   }
@@ -69,10 +69,13 @@ class App extends Component {
         <div>
           {
             this.state.persons.map((person, index) => {
-              return <MyPersonVar
-                deletePersonAct={() => this.deletePersonHandler(index)}
-                name={person.name}
-              />
+              return (
+                <MyPersonVar
+                  key={person.id}
+                  deletePersonAct={() => this.deletePersonHandler(index)}
+                  name={person.name}
+                />
+              )
             })
           }
 
@@ -89,6 +92,7 @@ class App extends Component {
         </div>
       );
     }
+
 
     return (
       <div className="App">
