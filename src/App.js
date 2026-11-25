@@ -54,6 +54,27 @@ class App extends Component {
       padding: '8px',
       fontSize: 'medium'
     };
+
+    let persons = null;
+
+    if (this.state.showPersons) {
+      persons = (
+        // Means: React.createElement() (under hood)
+        <div>
+          <MyPersonVar name={this.state.persons[0].name} />
+          <MyPersonVar name={this.state.persons[1].name} />
+
+          {/* You can pass a METHOD as a PROPERTY into Component. */}
+          <MyPersonVar
+            myClickProp={this.switchNameHandler.bind(this, 'Last-LINE-Click')}
+            name={this.state.persons[2].name}
+            propChanged={this.nameChangedHandler}>
+            (Can be clicked also.)
+          </MyPersonVar>
+        </div>
+      );
+    }
+
     return (
       <div className="App">
         <header className="App-header">
@@ -65,24 +86,7 @@ class App extends Component {
             style={myStyle}
             onClick={() => this.togglePersonsHandler()}>Toggle Persons</button>
 
-          {/* Ternar operator to show block: (because all here is JS!) */}
-          {
-            this.state.showPersons ?
-              // Means: React.createElement() (under hood)
-              <div>
-                <MyPersonVar name={this.state.persons[0].name} />
-                <MyPersonVar name={this.state.persons[1].name} />
-
-                {/* You can pass a METHOD as a PROPERTY into Component. */}
-                <MyPersonVar
-                  myClickProp={this.switchNameHandler.bind(this, 'Last-LINE-Click')}
-                  name={this.state.persons[2].name}
-                  propChanged={this.nameChangedHandler}>
-                  (Can be clicked also.)
-                </MyPersonVar>
-              </div>
-              : null
-          }
+          {persons}
 
         </div>
       </div>
