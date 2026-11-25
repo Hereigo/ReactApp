@@ -10,7 +10,8 @@ class App extends Component {
       { name: "Alex" },
       { name: "Max" },
       { name: "Felix" }
-    ]
+    ],
+    showPersons: true
   };
 
   // Handler (arrow function, so "this" always points to the component):
@@ -40,8 +41,12 @@ class App extends Component {
     });
   };
 
-  render() {
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({ showPersons: !doesShow });
+  };
 
+  render() {
     const myStyle = {
       color: 'blue',
       bnorderColor: 'blue',
@@ -49,32 +54,35 @@ class App extends Component {
       padding: '8px',
       fontSize: 'medium'
     };
-
     return (
       <div className="App">
-
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <div className="App-intro">
-
           <button
             style={myStyle}
-            onClick={() => this.switchNameHandler('BTN-Click')}>Switch Name</button>
+            onClick={() => this.togglePersonsHandler()}>Toggle Persons</button>
 
-          <MyPersonVar name={this.state.persons[0].name} />
+          {/* Ternar operator to show block: (because all here is JS!) */}
+          {
+            this.state.showPersons ?
+              // Means: React.createElement() (under hood)
+              <div>
+                <MyPersonVar name={this.state.persons[0].name} />
+                <MyPersonVar name={this.state.persons[1].name} />
 
-          <MyPersonVar name={this.state.persons[1].name} />
-
-          {/* You can pass a METHOD as a PROPERTY into Component. */}
-
-          <MyPersonVar
-            myClickProp={this.switchNameHandler.bind(this, 'Last-LINE-Click')}
-            name={this.state.persons[2].name}
-            propChanged={this.nameChangedHandler}>
-            (Can be clicked also.)
-          </MyPersonVar>
+                {/* You can pass a METHOD as a PROPERTY into Component. */}
+                <MyPersonVar
+                  myClickProp={this.switchNameHandler.bind(this, 'Last-LINE-Click')}
+                  name={this.state.persons[2].name}
+                  propChanged={this.nameChangedHandler}>
+                  (Can be clicked also.)
+                </MyPersonVar>
+              </div>
+              : null
+          }
 
         </div>
       </div>
