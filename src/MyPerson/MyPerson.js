@@ -1,21 +1,27 @@
-import React from 'react';
+import React from 'react'; // IMPORTANT !
 import './MyPerson.css';
 
 const myPerson = (props) => {
+
     return (
+
         <div className="Person">
+
             {/* Method can be passed as a Property. */}
             <p onClick={props.myClickProp}>
 
-                I'm a Person Component! <br />
-                My name is {props.name}. <br />
-                I am {Math.floor(Math.random() * 100)} years old. <br />
+                I'm a Person Component!
+                <br />
+                My name is <b>{props.name}.</b>
+                <br />
+                I am {Math.floor(Math.random() * 100)} years old.
+                <br />
 
-                {/* Included element, if exists! */} <b> {props.children} </b> <br />
+                {/* Child Element Included inside Component's tags */}
+                <b> {props.children} </b>
+                <br />
 
-                <input type='button' onClick={props.deletePersonAct} value='Delete' />
-
-                {/* <input type='text' onChange={props.propChanged} value={props.name}/> ?????? */}
+                <input type='button' onClick={props.deletePersAction} value='Delete' />
 
             </p>
         </div>

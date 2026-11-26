@@ -25,23 +25,8 @@ class App extends Component {
     });
   };
 
-  // "this.setState" in a class MERGES the new object into the old state:
-  // only "persons" is replaced, "personsAdditionalStartField" and
-  // "otherTestState" remain as is !!!
-  // (A "useState" setter in a function component REPLACES the whole object instead.)
-
-  // nameChangedHandler = (event) => {
-  //   this.setState({
-  //     persons: [
-  //       { name: "Alex" },
-  //       { name: event.target.value },
-  //       { name: "Felix" }
-  //     ]
-  //   });
-  // };
-
   deletePersonHandler = (personIndex) => {
-    // const persons = this.state.persons;
+    // Create a copy to avoid using reference.
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState({ persons: persons });
@@ -53,12 +38,12 @@ class App extends Component {
   };
 
   render() {
+
     const myStyle = {
-      color: 'blue',
-      bnorderColor: 'blue',
       backgroundColor: 'Azure',
-      padding: '8px',
-      fontSize: 'medium'
+      borderRadius: '7px',
+      fontSize: 'medium',
+      padding: '8px'
     };
 
     let persons = null;
@@ -69,26 +54,19 @@ class App extends Component {
         <div>
           {
             this.state.persons.map((person, index) => {
+              const componentInternalData = person.name === "Max" ? "Max is cool!" : null;
               return (
                 <MyPersonVar
+                  // Pass Method inside Component to use from inside
+                  deletePersAction={() => this.deletePersonHandler(index)}
                   key={person.id}
-                  deletePersonAct={() => this.deletePersonHandler(index)}
                   name={person.name}
-                />
+                >
+                  {componentInternalData}
+                </MyPersonVar>
               )
             })
           }
-
-          {/* <MyPersonVar name={this.state.persons[0].name} />
-          <MyPersonVar name={this.state.persons[1].name} />        
-          <MyPersonVar
-            myClickProp={this.switchNameHandler.bind(this, 'Last-LINE-Click')}
-            name={this.state.persons[2].name}
-            propChanged={this.nameChangedHandler}>
-            (Can be clicked also.)
-          </MyPersonVar> 
-          */}
-
         </div>
       );
     }
