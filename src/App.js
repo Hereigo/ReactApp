@@ -29,7 +29,7 @@ class App extends Component {
     personMod.name = event.target.value;
 
     const personsMod = [...this.state.persons];
-    personMod[personIdx] = personMod;
+    personsMod[personIdx] = personMod;
 
     this.setState({ persons: personsMod });
   };
@@ -90,7 +90,7 @@ class App extends Component {
         <div className="App-intro">
           <button
             style={myStyle}
-            onClick={() => this.togglePersonsHandler()}> Toggle Persons
+            onClick={() => this.togglePersonsHandler()}> Toggle Persons 1
           </button>
 
           {persons}
