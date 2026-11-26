@@ -54,7 +54,7 @@ class App extends Component {
         <div>
           {
             this.state.persons.map((person, index) => {
-              const componentInternalData = person.name === "Max" ? "Max is cool!" : null;
+
               return (
                 <MyPersonVar
                   // Pass Method inside Component to use from inside
@@ -62,7 +62,7 @@ class App extends Component {
                   key={person.id}
                   name={person.name}
                 >
-                  {componentInternalData}
+                  {person.name === "Max" ? "Max is cool!" : null}
                 </MyPersonVar>
               )
             })
