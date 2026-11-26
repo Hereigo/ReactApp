@@ -15,14 +15,23 @@ class App extends Component {
   };
 
   // Handler (arrow function, so "this" always points to the component):
-  switchNameHandler = (newName) => {
-    this.setState({  // update\mutate "state"
-      persons: [
-        { name: newName },
-        { name: newName },
-        { name: newName }
-      ]
+  nameChangedHandler = (event, id) => {
+
+    const personIdx = this.state.persons.findIndex(p => {
+      return p.id === id;
     });
+
+    // const personMod = Object.assign({}, this.state.persons[personIdx]);
+    const personMod = {
+      ...this.state.persons[personIdx]
+    };
+
+    personMod.name = event.target.value;
+
+    const personsMod = [...this.state.persons];
+    personMod[personIdx] = personMod;
+
+    this.setState({ persons: personsMod });
   };
 
   deletePersonHandler = (personIndex) => {
@@ -36,6 +45,7 @@ class App extends Component {
     const doesShow = this.state.showPersons;
     this.setState({ showPersons: !doesShow });
   };
+
 
   render() {
 
@@ -54,13 +64,13 @@ class App extends Component {
         <div>
           {
             this.state.persons.map((person, index) => {
-
               return (
                 <MyPersonVar
                   // Pass Method inside Component to use from inside
                   deletePersAction={() => this.deletePersonHandler(index)}
                   key={person.id}
                   name={person.name}
+                  onChangeEvent={(event) => this.nameChangedHandler(event, person.id)}
                 >
                   {person.name === "Max" ? "Max is cool!" : null}
                 </MyPersonVar>
@@ -71,7 +81,6 @@ class App extends Component {
       );
     }
 
-
     return (
       <div className="App">
         <header className="App-header">
@@ -81,7 +90,8 @@ class App extends Component {
         <div className="App-intro">
           <button
             style={myStyle}
-            onClick={() => this.togglePersonsHandler()}>Toggle Persons</button>
+            onClick={() => this.togglePersonsHandler()}> Toggle Persons
+          </button>
 
           {persons}
 

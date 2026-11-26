@@ -21,6 +21,9 @@ const myPerson = (props) => {
                 <b> {props.children} </b>
                 <br />
 
+                <input type='text' onChange={props.onChangeEvent} value={props.name} />
+                <br />
+
                 <input type='button' onClick={props.deletePersAction} value='Delete' />
 
             </p>
