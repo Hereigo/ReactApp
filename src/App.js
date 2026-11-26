@@ -82,16 +82,30 @@ class App extends Component {
       myStyle.backgroundColor = 'lightgrey';
     }
 
+    // let myClasses = ['red', 'bold'].join(' ');
+    let myClasses = [];
+
+    if (this.state.persons.length <= 2) {
+      myClasses.push('bold');
+    }
+    if (this.state.persons.length <= 1) {
+      myClasses.push('red');
+    }
+
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
+
         <div className="App-intro">
+
+          <p className={myClasses.join(' ')}>The list of Persons:</p>
+
           <button
             style={myStyle}
-            onClick={() => this.togglePersonsHandler()}> Toggle Persons 1
+            onClick={() => this.togglePersonsHandler()}> Toggle Persons
           </button>
 
           {persons}
