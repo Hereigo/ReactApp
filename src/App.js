@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Radium from 'radium'; // see the bottom !
 import MyPersonVar from './MyPerson/MyPerson';
 
 class App extends Component {
@@ -53,7 +54,10 @@ class App extends Component {
       backgroundColor: 'Azure',
       borderRadius: '7px',
       fontSize: 'medium',
-      padding: '8px'
+      padding: '8px',
+      ':hover': {
+        backgroundColor: 'violet' // by Radium
+      }
     };
 
     let persons = null;
@@ -80,6 +84,9 @@ class App extends Component {
       );
 
       myStyle.backgroundColor = 'lightgrey';
+      myStyle[':hover'] = {
+        backgroundColor: 'green'
+      }
     }
 
     // let myClasses = ['red', 'bold'].join(' ');
@@ -116,4 +123,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);

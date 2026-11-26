@@ -15,6 +15,11 @@ npx create-react-app my-react-app-1 --scripts-version 1.1.5
 
 npm start
 
+# ...
+
+# To allow using pseudo classes and media-queries in React app.
+npm install --save radium
+
 ```
 ## Useful links:
 
