@@ -59,26 +59,27 @@ class App extends Component {
     let persons = null;
 
     if (this.state.showPersons) {
+
       persons = (
         // Means: React.createElement() (under hood)
         <div>
-          {
-            this.state.persons.map((person, index) => {
-              return (
-                <MyPersonVar
-                  // Pass Method inside Component to use from inside
-                  deletePersAction={() => this.deletePersonHandler(index)}
-                  key={person.id}
-                  name={person.name}
-                  onChangeEvent={(event) => this.nameChangedHandler(event, person.id)}
-                >
-                  {person.name === "Max" ? "Max is cool!" : null}
-                </MyPersonVar>
-              )
-            })
-          }
+          {this.state.persons.map((person, index) => {
+            return (
+              <MyPersonVar
+                // Pass Method inside Component to use from inside
+                deletePersAction={() => this.deletePersonHandler(index)}
+                key={person.id}
+                name={person.name}
+                onChangeEvent={(event) => this.nameChangedHandler(event, person.id)}
+              >
+                {person.name === "Max" ? "Max is cool!" : null}
+              </MyPersonVar>
+            )
+          })}
         </div>
       );
+
+      myStyle.backgroundColor = 'lightgrey';
     }
 
     return (
