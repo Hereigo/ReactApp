@@ -20,7 +20,26 @@ npm start
 # To allow using pseudo classes and media-queries in React app.
 npm install --save radium
 
+# To modify app structure to .... ???????
+npm run eject # (added by react-scripts)
 ```
+### To support Css-Modules 
+- in webpak.config.dev.js
+- in webpak.config.prod.js
+```json
+{
+  test: /\.css$/,
+  use: [
+    require.resolve('style-loader'),
+    {
+      loader: require.resolve('css-loader'),
+      options: {
+        importLoaders: 1,
+        modules: true,       // <=== !!!!!!!!
+        localIdentName: '[name]__[local]__[hash:base65:5]' // <== !!!!!!!
+      },
+```
+
 ## Useful links:
 
 - create-react-app: https://github.com/facebookincubator/create-react-app
