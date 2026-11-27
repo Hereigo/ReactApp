@@ -4,9 +4,15 @@ import Radium from 'radium'; // see the bottom !
 
 const myPerson = (props) => {
 
+    const myStyles = {
+        '@media (max-width: 500px)': {
+            backgroundColor: 'lightGrey'
+        }
+    }
+
     return (
 
-        <div className="Person">
+        <div className="Person" style={myStyles}>
 
             {/* Method can be passed as a Property. */}
             <p onClick={props.myClickProp}>

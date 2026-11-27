@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Radium from 'radium'; // see the bottom !
+import Radium, { StyleRoot } from 'radium'; // see the bottom !
 import MyPersonVar from './MyPerson/MyPerson';
 
 class App extends Component {
@@ -100,25 +100,30 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
+      // For Radium MediaQueries
+      <StyleRoot>
 
-        <div className="App-intro">
+        <div className="App">
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h1 className="App-title">Welcome to React</h1>
+          </header>
 
-          <p className={myClasses.join(' ')}>The list of Persons:</p>
+          <div className="App-intro">
 
-          <button
-            style={myStyle}
-            onClick={() => this.togglePersonsHandler()}> Toggle Persons
-          </button>
+            <p className={myClasses.join(' ')}>The list of Persons:</p>
 
-          {persons}
+            <button
+              style={myStyle}
+              onClick={() => this.togglePersonsHandler()}> Toggle Persons
+            </button>
 
+            {persons}
+
+          </div>
         </div>
-      </div>
+
+      </StyleRoot>
     );
   }
 }
