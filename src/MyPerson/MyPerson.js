@@ -1,18 +1,11 @@
 import React from 'react'; // IMPORTANT !
 import './MyPerson.css';
-import Radium from 'radium'; // see the bottom !
 
 const myPerson = (props) => {
 
-    const myStyles = {
-        '@media (max-width: 500px)': {
-            backgroundColor: 'lightGrey'
-        }
-    }
-
     return (
 
-        <div className="Person" style={myStyles}>
+        <div className="Person">
 
             {/* Method can be passed as a Property. */}
             <p onClick={props.myClickProp}>
@@ -38,4 +31,4 @@ const myPerson = (props) => {
     );
 };
 
-export default Radium(myPerson);
+export default myPerson;

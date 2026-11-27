@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Radium, { StyleRoot } from 'radium'; // see the bottom !
 import MyPersonVar from './MyPerson/MyPerson';
 
 class App extends Component {
@@ -54,10 +53,7 @@ class App extends Component {
       backgroundColor: 'Azure',
       borderRadius: '7px',
       fontSize: 'medium',
-      padding: '8px',
-      ':hover': {
-        backgroundColor: 'violet' // by Radium
-      }
+      padding: '8px'
     };
 
     let persons = null;
@@ -84,9 +80,6 @@ class App extends Component {
       );
 
       myStyle.backgroundColor = 'lightgrey';
-      myStyle[':hover'] = {
-        backgroundColor: 'green'
-      }
     }
 
     // let myClasses = ['red', 'bold'].join(' ');
@@ -100,32 +93,27 @@ class App extends Component {
     }
 
     return (
-      // For Radium MediaQueries
-      <StyleRoot>
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1 className="App-title">Welcome to React</h1>
+        </header>
 
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to React</h1>
-          </header>
+        <div className="App-intro">
 
-          <div className="App-intro">
+          <p className={myClasses.join(' ')}>The list of Persons:</p>
 
-            <p className={myClasses.join(' ')}>The list of Persons:</p>
+          <button
+            style={myStyle}
+            onClick={() => this.togglePersonsHandler()}> Toggle Persons
+          </button>
 
-            <button
-              style={myStyle}
-              onClick={() => this.togglePersonsHandler()}> Toggle Persons
-            </button>
+          {persons}
 
-            {persons}
-
-          </div>
         </div>
-
-      </StyleRoot>
+      </div>
     );
   }
 }
 
-export default Radium(App);
+export default App;
